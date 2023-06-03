@@ -1,0 +1,122 @@
+# NUMPY
+
+# This library is the main library for scientific computing in Python.
+ It provides high-performance multidimensional array object, and tools for working with these arrays.
+
+# importing required modules to insert an image
+from google.colab import files
+from IPython.display import Image
+
+uploaded = files.upload()
+
+Image('image.png')
+
+import numpy as np
+
+# How to create an array?
+a = np.array([1,2,3]) # All the entries are of int type
+b = np.array([1.5, 0, 1]) # All the entries automatically changed to float 
+c = np.array([2.4, 1, 9], dtype = float)
+
+# The above are all 1-Dimensional array
+
+
+# Multidimensional array
+
+arr = np.array([(1,2,3), (4,5,6)])  #2-D array
+print(arr)
+
+arr_1 = np.array([[(1,2,3),(4,5,6)],[(6,7,8), (4,5,6)]])
+print(arr_1)
+
+
+# creating arrays using different functions
+my_arr = np.zeros((3,4), dtype = int) #2-D
+print(my_arr)
+my_arr1 = np.ones((2,2), dtype = np.int16) # 2-D
+print(my_arr1)
+my_arr2 = np.zeros((3,3,3), dtype = np.int32) # 3-D
+print(my_arr2)
+
+
+my_arr3 = np.arange(0, 51, 5) # The array created is an array of evenly spaced values. 
+print(my_arr3)
+
+my_arr4 = np.linspace(0, 2, 9) # 9 numbers bw 0 and 9 at equal intervals, extreme values are included.
+print(my_arr4)
+
+#creating a constant array
+my_arr5 = np.full((2,2), 0.9)
+print(my_arr5)   # creating a 2x2 matrix or 2-D array 
+
+# Creating 2x2 identity matrix
+my_arr6 = np.eye(2)
+print(my_arr6)
+
+# create an array with random values
+import random
+my_arr7 = np.random.random((2,2))
+print(my_arr7)
+
+# create an empty array
+my_arr8 = np.empty((3,2))
+print(my_arr8)
+
+ide = np.identity(3)  # identity matrix
+ide
+
+# reshaping arrays
+my_arr9 = np.arange(99)
+print(my_arr9)
+ary = my_arr9.reshape(3,33)  # By multiplying these numbers you should get the original number. here, 3*33 = 99.
+ary
+
+x = [[1,2,3],[4,5,6],[7,8,9]]
+arr_x = np.array(x)
+arr_x
+
+arr_x.sum(axis = 1)
+
+
+
+
+
+
+# saving and loading on disks 
+np.save('my_array', a) # this array defined in the beginnig is now stored on hard disk and now even if the computer is off it will still be there .
+# only two parameters 
+np.savez('array.npz', a,b,f)
+# difference bw np.save and np.savez is : np.save stores a single array and np.savez stores multiple arrays
+np.load('my_array.npy')
+
+# Saving and loading text files 
+# np.loadtxt("myfile.txt")
+np.genfromtxt("EastWestAirlinesNN.csv")
+np.savetxt("myarray.txt", a, delimiter = " ")
+
+# How to ask for help
+np.info(np.ndarray.dtype)
+
+# inspecting your arrays 
+a.shape # gives the dimension of array
+len(a)# length of array 
+b.ndim # number of dimensions 
+e.size # gives the number of elements in array 
+b.dtype # gives the data type of elements of array and array consists elements of same datatype
+b.dtype.name # only want the name of datatype
+b.astype(int) # converts every element into specific datatype(here, int)
+
+
+#Data types 
+np.int64  # signed 64-bit integer types 
+np.float32 # standard double precision(means two numbers after the decimal point) floating point 
+np.complex # complex numbers represented by 128 floats
+np.bool # boolean type storing true or false values
+np.object # pyhton object 
+np.string_  # fixed length string 
+np.unicode # Fixed length unicode type 
+
+
+
+
+
