@@ -117,6 +117,115 @@ np.string_  # fixed length string
 np.unicode # Fixed length unicode type 
 
 
+# Arithmetic operations 
+print(a)
+print(b)
+
+g = a-b
+g  # 'a' matrix is of dimension 1x3 and 'b' has the dimension 2x3. So in a-b, (1st row of a) - (1st row of a) then (1st row of a) - (2nd row of b)
+# alter method to do the same 
+np.subtract(a,b)
+a+b #Addition
+# Alter method
+np.add(a,b)
+a/b  # Divide 
+np.divide(a,b) # Divide using method 
+a*b
+np.multiply(a,b)  # the dimensions of both the matrices are different but this multiplcation is elementwise and same row is being repeated in 'a' (this is known as broadcasting)
+np.exp(b)
+np.sqrt(b)
+np.sin(a)
+np.cos(b)
+np.log(a)
+# a.dot(b)  only possible when dimensions are same 
+
+
+# Comparison
+a == b  # Comparing each element and gives an output as an array of elements as boolean values(true or false)
+a <2 # Elementwise comparison 
+np.array_equal(a,b) # full array comparison
+
+
+from numpy.core.fromnumeric import cumsum
+# Aggregate functions 
+
+a.sum() #Sum of all elements of array 'a'
+a.min() # gives the minimum element 
+b.max(axis = 0) #  setting axis = 0, we are able to find maximum in each column.
+b.cumsum(axis = 1) # consider row 1 first, first element remains same, then add 1.5 with 2(1.5+2 = 3.5) , then add 3.5 to 3 = 6.5 , repeat correspondingly in the second row 
+a.mean()
+np.median(b)
+np.corrcoef(a)
+np.std(a)
+
+# Copying arrays 
+h = a.view() # creating a view of the array with the same data 
+np.copy(a) # Creating a copy of array 'a'
+h1 = a.copy() # creates a deep copy of 'a' , any changes in 'a' wont affect h1 and vice-versa
+
+# Sorting arrays 
+a.sort() #Sort an array
+c.sort(axis = 0)  
+
+my_own = np.array([8,4,1,3,6])
+np.sort(my_own)# To display also
+
+#Subsetting, Slicing and Indexing 
+
+#Subsetting :
+
+a[2] # Selecting a certain element of an array and indexing starts from 0,1,2,....n 
+b[1,2] # Element at row 1 and column 2
+
+# Slicing:
+
+a[0:2] # 2 is excluded 
+b[0:2,1] # Selecting all the rows(as there are only two) and column 1 acc. to indexing 
+b[:1] # Select row no 0 accoring to indexing and all the columns 
+b[0:1, :] # gives the same output as above 
+c[1,...] #same as [1,:,:]
+#Reversing an array :
+a[ : :-1]
+
+# Boolean Indexing :
+ 
+a[a<2] # Selecting elements in a that are less than 2
+b[b<9] # will get all the elements 
+
+# Fancy Indexing :
+
+b[[1,0,1,0],[0,1,2,0]] # Selecting elements as (1,0),(0,1),(1,2) and (0,0)
 
 
 
+
+# Array manipulations :
+
+# Transpose of an array 
+i = np.transpose(b)
+i.T
+
+# Changing array shapes :
+b_r = b.ravel() # Flattening the array
+b_r
+g.reshape(3,-2)
+
+#Adding and removing elements :
+
+np.append(h,g) # Adding elements of g also
+np.insert(a, 1, 5) # inserting the no 5 into 'a' at the index 1 
+np.delete(a,[1]) # Deleting the element at index 1 
+
+
+ # Combining arrays :
+ np.concatenate((a,d), axis = 0)
+ np.vstack((a,b)) # Vertically stacking arrays
+ # Alter method to do the same:
+ #np.r_[e,f] but dimensions must be the same
+ np.hstack((a,d))
+# Alter way : np.c_[a,d]
+
+#Splitting arrays :
+
+np.hsplit(b,3) # splitting arrays horizontally 
+np.vsplit(b,2) # splitting arrays vertically
